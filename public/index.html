@@ -4,105 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Darts 301 Score Table</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Darts 301 Score Table</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Player</th>
-                <th>Legs</th>
-                <th>Score</th>
-                <th>Throws</th>
-                <th>Input Score</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Player 1</td>
-                <td><input type="number" id="player1Legs" value="0"></td>
-                <td><input type="number" id="player1Score" value="301"></td>
-                <td><input type="number" id="player1Throws" value="0"></td>
-                <td><input type="number" id="player1InputScore" placeholder="Enter score"></td>
-                <td><button onclick="updateScore(1)">Submit</button></td>
-            </tr>
-            <tr>
-                <td>Player 2</td>
-                <td><input type="number" id="player2Legs" value="0"></td>
-                <td><input type="number" id="player2Score" value="301"></td>
-                <td><input type="number" id="player2Throws" value="0"></td>
-                <td><input type="number" id="player2InputScore" placeholder="Enter score"></td>
-                <td><button onclick="updateScore(2)">Submit</button></td>
-            </tr>
-        </tbody>
-    </table>
-    <button onclick="newGame()">New Game</button>
-    <script>
-        function updateScore(playerId) {
-            const scoreInput = document.getElementById(`player${playerId}Score`);
-            const throwsInput = document.getElementById(`player${playerId}Throws`);
-            const score = parseInt(scoreInput.value);
-            const throws = parseInt(throwsInput.value);
-            const inputScore = parseInt(document.getElementById(`player${playerId}InputScore`).value);
-
-            if (!isNaN(inputScore) && inputScore > 0 && inputScore <= 180) {
-                const updatedScore = score - inputScore;
-                if (updatedScore === 0) {
-                    alert(`Player ${playerId} wins the leg!`);
-                    const legsInput = document.getElementById(`player${playerId}Legs`);
-                    legsInput.value = parseInt(legsInput.value) + 1;
-                    scoreInput.value = 301;
-                } else if (updatedScore < 0) {
-                    alert(`Invalid score! Player ${playerId} cannot go below 0.`);
-                } else {
-                    scoreInput.value = updatedScore;
-                }
-                throwsInput.value = throws + 1;
-                document.getElementById(`player${playerId}InputScore`).value = '';
-            } else {
-                alert('Invalid score entered!');
-            }
-        }
-
-        function newGame() {
-            const confirmNewGame = confirm('Are you sure you want to start a new game?');
-            if (confirmNewGame) {
-                const scoreInputs = document.querySelectorAll('input[id$="Score"]');
-                scoreInputs.forEach(input => {
-                    input.value = 301;
-                });
-
-                const throwsInputs = document.querySelectorAll('input[id$="Throws"]');
-                throwsInputs.forEach(input => {
-                    input.value = 0;
-                });
-
-                const inputScoreInputs = document.querySelectorAll('input[id$="InputScore"]');
-                inputScoreInputs.forEach(input => {
-                    input.value = '';
-                });
-
-                const legsInputs = document.querySelectorAll('input[id$="Legs"]');
-                legsInputs.forEach(input => {
-                    input.value = 0;
-                });
-            }
-        }
-    </script>
+    <div id="root"></div>
+    <script src="index.js"></script>
 </body>
 </html>
