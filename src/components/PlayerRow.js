@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
 
-const PlayerRow = ({ player, updateScore }) => {
-    const [score, setScore] = useState(301);
-    const [throws, setThrows] = useState(0);
-    const [legs, setLegs] = useState(0);
+const PlayerRow = ({ player, updateScoreAndThrows, updateLegs, score, throws, legs }) => {
     const [inputScore, setInputScore] = useState('');
 
     const handleSubmit = () => {
-        const newScore = score - inputScore;
+        const newScore = score - parseInt(inputScore, 10);
         if (newScore === 0) {
-            alert(`Player ${player} wins the leg!`);
-            setLegs(legs + 1);
-            setScore(301);
+            alert(`Player ${player.id} wins the leg!`);
+            updateLegs(player.id, legs + 1);
         } else if (newScore < 0) {
-            alert(`Invalid score! Player ${player} cannot go below 0.`);
+            updateScoreAndThrows(player.id, score, throws + 1)
+            alert(`Invalid score! Player ${player.id} cannot go below 0.`);
         } else {
-            setScore(newScore);
+            updateScoreAndThrows(player.id, newScore, throws + 1)
         }
-        setThrows(throws + 1);
         setInputScore('');
     };
 
     return (
         <tr>
-            <td>{`Player ${player}`}</td>
+            <td>{`Player ${player.id}`}</td>
             <td>{legs}</td>
             <td>{score}</td>
             <td>{throws}</td>
