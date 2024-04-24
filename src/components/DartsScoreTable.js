@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {PlayerRow} from './PlayerRow';
+import PlayerRow from './PlayerRow';
 
 const DartsScoreTable = () => {
     const [players, setPlayers] = useState([1, 2]);

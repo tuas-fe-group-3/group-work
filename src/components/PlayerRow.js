@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const PlayerRow = ({ player, updateScore }) => {
+const PlayerRow = ({ player, updateScore }) => {
     const [score, setScore] = useState(301);
     const [throws, setThrows] = useState(0);
     const [legs, setLegs] = useState(0);
@@ -36,3 +36,5 @@ export const PlayerRow = ({ player, updateScore }) => {
         </tr>
     );
 };
+
+export default PlayerRow;
