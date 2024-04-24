@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PlayerRow from './PlayerRow';
+import PlayerCard from './PlayerCard';
 
 const DartsScoreTable = () => {
     const [players, setPlayers] = useState([
@@ -31,31 +31,21 @@ const DartsScoreTable = () => {
     return (
         <>
             <button onClick={newGame}>New Game</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Player</th>
-                        <th>Legs</th>
-                        <th>Score</th>
-                        <th>Throws</th>
-                        <th>Input Score</th>
-                        <th>Submit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {players.map(player => (
-                        <PlayerRow
-                            key={player.id}
-                            player={player}
-                            score={player.score}
-                            throws={player.throws}
-                            legs={player.legs}
-                            updateScoreAndThrows={updateScoreAndThrows}
-                            updateLegs={updateLegs}
-                        />
-                    ))}
-                </tbody>
-            </table>
+
+            <div id="cards">
+                {players.map(player => (
+                    <PlayerCard
+                        key={player.id}
+                        player={player}
+                        score={player.score}
+                        throws={player.throws}
+                        legs={player.legs}
+                        updateScoreAndThrows={updateScoreAndThrows}
+                        updateLegs={updateLegs}
+                        className="player-card"
+                    />
+                ))}
+            </div>
         </>
     );
 };

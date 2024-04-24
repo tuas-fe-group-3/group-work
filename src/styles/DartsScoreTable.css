@@ -10,3 +10,13 @@ th, td {
 th {
     background-color: #f2f2f2;
 }
+
+#cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#cards .player-card:first-child .card-body {
+    text-align: right;
+}

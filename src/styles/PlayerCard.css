@@ -1,0 +1,16 @@
+/* PlayerCard.css */
+.card {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1.2em;
+}
