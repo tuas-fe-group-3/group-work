@@ -1,5 +1,6 @@
 import React , { useState }from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
+import ListGroup from 'react-bootstrap/ListGroup';
 import '../styles/PlayerCard.css';
 
 const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, legs, className }) => {
@@ -22,17 +23,15 @@ const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, l
     <Card className={className}>
         <Card.Body>
             <Card.Title>Player {player.id}</Card.Title>
+            <ListGroup variant="flush">
+                <ListGroup.Item>Score: {player.score}</ListGroup.Item>
+                <ListGroup.Item>Throws: {player.throws}</ListGroup.Item>
+                <ListGroup.Item>Legs: {player.legs}</ListGroup.Item>
+            </ListGroup>
             <Card.Text>
-                Score: {player.score}
-                <br />
-                Throws: {player.throws}
-                <br />
-                Legs: {player.legs}
-                <br />
                 <input type="number" value={inputScore} onChange={e => setInputScore(e.target.value)} placeholder="Enter score" />
-                <br />
-                <button class="btn btn-success" onClick={handleSubmit}>Submit</button>
             </Card.Text>
+                <Button variant="success" onClick={handleSubmit}>Submit</Button>
         </Card.Body>
     </Card>
 )};
