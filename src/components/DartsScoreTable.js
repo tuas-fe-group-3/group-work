@@ -30,21 +30,23 @@ const DartsScoreTable = () => {
 
     return (
         <>
-            <button onClick={newGame}>New Game</button>
 
             <div id="cards">
                 {players.map(player => (
                     <PlayerCard
-                        key={player.id}
-                        player={player}
-                        score={player.score}
-                        throws={player.throws}
-                        legs={player.legs}
-                        updateScoreAndThrows={updateScoreAndThrows}
-                        updateLegs={updateLegs}
-                        className="player-card"
+                    key={player.id}
+                    player={player}
+                    score={player.score}
+                    throws={player.throws}
+                    legs={player.legs}
+                    updateScoreAndThrows={updateScoreAndThrows}
+                    updateLegs={updateLegs}
+                    className="player-card"
                     />
                 ))}
+            </div>
+            <div id="button-container">
+                <button class="btn btn-primary" onClick={newGame}>New Game</button>
             </div>
         </>
     );

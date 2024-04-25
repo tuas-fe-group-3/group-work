@@ -15,8 +15,14 @@ th {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 10%;
 }
 
 #cards .player-card:first-child .card-body {
     text-align: right;
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
 }

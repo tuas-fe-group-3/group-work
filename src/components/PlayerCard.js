@@ -30,7 +30,8 @@ const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, l
                 Legs: {player.legs}
                 <br />
                 <input type="number" value={inputScore} onChange={e => setInputScore(e.target.value)} placeholder="Enter score" />
-                <button onClick={handleSubmit}>Submit</button>
+                <br />
+                <button class="btn btn-success" onClick={handleSubmit}>Submit</button>
             </Card.Text>
         </Card.Body>
     </Card>
