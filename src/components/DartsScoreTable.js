@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import PlayerCard from './PlayerCard';
 import { Button } from 'react-bootstrap';
 
-const DartsScoreTable = () => {
+const DartsScoreTable = ({ player1, player2, game, onResetGame }) => {
     const [players, setPlayers] = useState([
-        { id: 1, score: 301, throws: 0, legs: 0 },
-        { id: 2, score: 301, throws: 0, legs: 0 },
+        { id: 1, name: player1, score: game, throws: 0, legs: 0 },
+        { id: 2, name: player2, score: game, throws: 0, legs: 0 },
     ]);
 
     const updateScoreAndThrows = (playerId, newScore, newThrows) => {
@@ -19,13 +19,13 @@ const DartsScoreTable = () => {
 
     const updateLegs = (playerId, newLegs) => {
         setPlayers(players.map(player =>
-            player.id === playerId ? { ...player, legs: newLegs, throws: 0, score: 301 } : player
+            player.id === playerId ? { ...player, legs: newLegs, throws: 0, score: game } : player
         ));
     };
 
     const newGame = () => {
         if (window.confirm('Are you sure you want to start a new game?')) {
-            setPlayers(players.map(player => ({ ...player, score: 301, throws: 0, legs: 0 })));
+            setPlayers(players.map(player => ({ ...player, score: game, throws: 0, legs: 0 })));
         }
     };
 
@@ -51,7 +51,8 @@ const DartsScoreTable = () => {
                 ))}
             </div>
             <div id="button-container">
-                <Button onClick={newGame}>New Game</Button>
+                <Button variant="warning" onClick={newGame}>Restart the same game</Button>
+                <Button variant="danger" onClick={onResetGame}>Start New Game</Button>
             </div>
         </>
     );

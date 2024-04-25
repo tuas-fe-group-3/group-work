@@ -22,7 +22,7 @@ const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, l
     return (
     <Card className={`player-card ${isLowestScore ? 'lowest-score' : ''}`}>
         <Card.Body>
-            <Card.Title className={`player-card ${isLowestScore ? 'greenAndItalic' : ''}`}>Player {player.id}</Card.Title>
+            <Card.Title className={`player-card ${isLowestScore ? 'greenAndItalic' : ''}`}>{player.name}</Card.Title>
             <ListGroup variant="flush">
                 <ListGroup.Item>Score: {player.score}</ListGroup.Item>
                 <ListGroup.Item>Throws: {player.throws}</ListGroup.Item>
