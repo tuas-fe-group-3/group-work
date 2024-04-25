@@ -3,7 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import ListGroup from 'react-bootstrap/ListGroup';
 import '../styles/PlayerCard.css';
 
-const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, legs, className }) => {
+const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, legs, isLowestScore }) => {
     const [inputScore, setInputScore] = useState('');
 
     const handleSubmit = () => {
@@ -20,7 +20,7 @@ const PlayerCard = ({ player, updateScoreAndThrows, updateLegs, score, throws, l
         setInputScore('');
     };
     return (
-    <Card className={className}>
+    <Card className={`player-card ${isLowestScore ? 'lowest-score' : ''}`}>
         <Card.Body>
             <Card.Title>Player {player.id}</Card.Title>
             <ListGroup variant="flush">

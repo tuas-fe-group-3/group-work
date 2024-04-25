@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PlayerCard from './PlayerCard';
+import { Button } from 'react-bootstrap';
 
 const DartsScoreTable = () => {
     const [players, setPlayers] = useState([
@@ -28,6 +29,10 @@ const DartsScoreTable = () => {
         }
     };
 
+    // Find the lowest score among players
+    const lowestScore = Math.min(...players.map(player => player.score));
+    const allScoresEqual = players.every(player => player.score === players[0].score);
+    
     return (
         <>
 
@@ -41,12 +46,12 @@ const DartsScoreTable = () => {
                     legs={player.legs}
                     updateScoreAndThrows={updateScoreAndThrows}
                     updateLegs={updateLegs}
-                    className="player-card"
+                    isLowestScore={player.score === lowestScore && !allScoresEqual}
                     />
                 ))}
             </div>
             <div id="button-container">
-                <button class="btn btn-primary" onClick={newGame}>New Game</button>
+                <Button onClick={newGame}>New Game</Button>
             </div>
         </>
     );
