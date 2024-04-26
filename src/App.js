@@ -28,12 +28,12 @@ function App() {
   };
 
   return (
-    <GameContext.Provider value={{ player1, player2, game, resetGame, legCount }}>
+    <GameContext.Provider value={{ player1, player2, game, resetGame, legCount, startGame }}>
       <div className="App">
         {gameStarted ? (
           <DartsScoreTable />
         ) : (
-          <Welcome onStartGame={startGame} />
+          <Welcome />
         )}
       </div>
     </GameContext.Provider>

@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button } from 'react-bootstrap';
+import { GameContext } from '../App';
 
+const Welcome = () => {
+    const { startGame } = useContext(GameContext);
 
-const Welcome = ({ onStartGame }) => {
     const [player1, setPlayer1] = useState('');
     const [player2, setPlayer2] = useState('');
     const [game, setGame] = useState('301');
     const [legCount, setLegCount] = useState(1);
-
-    const startGame = () => {
-        onStartGame(player1, player2, game, legCount);
-    };
 
     return (
         <div className="container mt-5">
@@ -41,7 +39,7 @@ const Welcome = ({ onStartGame }) => {
                             <option value="7">7</option>
                         </select>
                     </div>
-                    <Button onClick={startGame}>Start Game</Button>
+                    <Button onClick={() => startGame(player1, player2, game, legCount)}>Start Game</Button>
                 </div>
             </div>
         </div>
