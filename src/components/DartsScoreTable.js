@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PlayerCard from './PlayerCard';
 import { Button } from 'react-bootstrap';
+import { GameContext } from '../App';
 
-const DartsScoreTable = ({ player1, player2, game, onResetGame, legCount }) => {
+const DartsScoreTable = () => {
+    
+    const { player1, player2, game, resetGame, legCount } = useContext(GameContext);
     const [players, setPlayers] = useState([
         { id: 1, name: player1, score: game, throws: 0, legs: 0, hasTurn: true },
         { id: 2, name: player2, score: game, throws: 0, legs: 0, hasTurn: false },
@@ -68,7 +71,7 @@ const DartsScoreTable = ({ player1, player2, game, onResetGame, legCount }) => {
             </div>
             <div id="button-container">
                 <Button variant="warning" onClick={newGame}>Restart the same game</Button>
-                <Button variant="danger" onClick={onResetGame}>Start New Game</Button>
+                <Button variant="danger" onClick={resetGame}>Start New Game</Button>
             </div>
         </div>
     );

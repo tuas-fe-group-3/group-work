@@ -3,6 +3,8 @@ import DartsScoreTable from './components/DartsScoreTable';
 import Welcome from './components/Welcome';
 import './styles/DartsScoreTable.css';
 
+export const GameContext = React.createContext();
+
 function App() {
   const [gameStarted, setGameStarted] = useState(false);
   const [player1, setPlayer1] = useState('');
@@ -26,13 +28,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {gameStarted ? (
-        <DartsScoreTable player1={player1} player2={player2} game={game} onResetGame={resetGame} legCount={legCount}/>
-      ) : (
-        <Welcome onStartGame={startGame} />
-      )}
-    </div>
+    <GameContext.Provider value={{ player1, player2, game, resetGame, legCount }}>
+      <div className="App">
+        {gameStarted ? (
+          <DartsScoreTable />
+        ) : (
+          <Welcome onStartGame={startGame} />
+        )}
+      </div>
+    </GameContext.Provider>
   );
 }
 
