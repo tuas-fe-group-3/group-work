@@ -15,7 +15,7 @@ th {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 #cards .player-card:first-child .card-body {
@@ -24,11 +24,19 @@ th {
 
 #button-container {
     display: flex;
-    justify-content: space-around;
-    width: 300px;
-    margin: auto
+    justify-content: space-between;
+    width: 640px;
 }
 
 #button-container button {
-    margin: 0 10px; /* Adjust the value as needed */
+    margin: 0 80px;
+    max-width: 150px;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
 }

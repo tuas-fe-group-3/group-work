@@ -6,9 +6,10 @@ const Welcome = ({ onStartGame }) => {
     const [player1, setPlayer1] = useState('');
     const [player2, setPlayer2] = useState('');
     const [game, setGame] = useState('301');
+    const [legCount, setLegCount] = useState(1);
 
     const startGame = () => {
-        onStartGame(player1, player2, game);
+        onStartGame(player1, player2, game, legCount);
     };
 
     return (
@@ -29,6 +30,15 @@ const Welcome = ({ onStartGame }) => {
                         <select className="form-control" id="game" value={game} onChange={e => setGame(e.target.value)}>
                             <option value="301">301</option>
                             <option value="501">501</option>
+                        </select>
+                    </div>
+                    <div className="form-group mb-3">
+                        <label htmlFor="legCount">Select set size</label>
+                        <select className="form-control" id="legCount" value={legCount} onChange={e => setLegCount(e.target.value)}>
+                            <option value="1">1</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="7">7</option>
                         </select>
                     </div>
                     <Button onClick={startGame}>Start Game</Button>
